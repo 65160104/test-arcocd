@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js Example</title>
+    <!-- เชื่อมโยง Vue.js แบบ CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{ message }}</h1>
+        <p>{{ description }}</p>
+        <button @click="changeMessage">Change Message</button>
+    </div>
+
+    <script>
+        // สร้าง Vue instance
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello, Vue.js!',
+                description: 'Welcome to the homepage!'
+            },
+            methods: {
+                changeMessage() {
+                    this.message = 'You clicked the button!';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
