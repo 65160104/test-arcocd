@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: express-app
-          image: 65160104/test-arcocd:latest
+          image: 65160104/mysql:latest
           imagePullPolicy: Always   # Ensures Kubernetes pulls the latest image on every deploy
           ports:
             - containerPort: 3000
