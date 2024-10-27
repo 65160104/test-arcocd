@@ -1,48 +1,24 @@
-# version: '3.8'
-
-# services:
-#   express-app:
-#     image: 65160104/test-arcocd:latest  # ใช้ image ของคุณที่สร้างไว้
-#     build:
-#       context: .
-#       dockerfile: Dockerfile  # ถ้ามี Dockerfile ใน directory เดียวกัน
-#     ports:
-#       - "3000:3000"  # เปิดพอร์ต 3000 บนโฮสต์และเชื่อมต่อกับพอร์ต 3000 ใน container
-   
-
-#   mongo:
-#     image: mongo:latest  # ใช้ image ของ MongoDB
-#     ports:
-#       - "27017:27017"  # เปิดพอร์ต 27017 บนโฮสต์
-#     volumes:
-#       - mongo-data:/data/db  # เก็บข้อมูล MongoDB ใน volume
-
-# volumes:
-#   mongo-data:
-
-version: '3.7'
+version: '3.8'
 
 services:
-  db:
-    image: mysql:latest
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: data
-      MYSQL_USER: your_username
-      MYSQL_PASSWORD: your_password
-    volumes:
-      - ./mysql_data:/var/lib/mysql
+  express-app:
+    image: 65160104/test-arcocd:latest  # ใช้ image ของคุณที่สร้างไว้
+    build:
+      context: .
+      dockerfile: Dockerfile  # ถ้ามี Dockerfile ใน directory เดียวกัน
     ports:
-      - "3306:3306"
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
-    restart: always
+      - "3000:3000"  # เปิดพอร์ต 3000 บนโฮสต์และเชื่อมต่อกับพอร์ต 3000 ใน container
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/mydatabase  # URI ของ MongoDB
     depends_on:
-      - db
-    environment:
-      PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: root
+      - mongo  # รอ MongoDB ให้เริ่มก่อน
+
+  mongo:
+    image: mongo:latest  # ใช้ image ของ MongoDB
     ports:
-      - "8080:80"
+      - "27017:27017"  # เปิดพอร์ต 27017 บนโฮสต์
+    volumes:
+      - mongo-data:/data/db  # เก็บข้อมูล MongoDB ใน volume
+
+volumes:
+  mongo-data:
