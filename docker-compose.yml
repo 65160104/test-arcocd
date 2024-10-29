@@ -1,24 +1,24 @@
-version: '3.8'
+# version: '3.8'
 
-services:
-  express-app:
-    image: 65160104/test-arcocd:latest  # ใช้ image ของคุณที่สร้างไว้
-    build:
-      context: .
-      dockerfile: Dockerfile  # ถ้ามี Dockerfile ใน directory เดียวกัน
-    ports:
-      - "3000:3000"  # เปิดพอร์ต 3000 บนโฮสต์และเชื่อมต่อกับพอร์ต 3000 ใน container
-    environment:
-      - MONGODB_URI=mongodb://mongo:27017/mydatabase  # URI ของ MongoDB
-    depends_on:
-      - mongo  # รอ MongoDB ให้เริ่มก่อน
+# services:
+#   express-app:
+#     image: 65160104/test-arcocd:latest  # ใช้ image ของคุณที่สร้างไว้
+#     build:
+#       context: .
+#       dockerfile: Dockerfile  # ถ้ามี Dockerfile ใน directory เดียวกัน
+#     ports:
+#       - "3000:3000"  # เปิดพอร์ต 3000 บนโฮสต์และเชื่อมต่อกับพอร์ต 3000 ใน container
+#     environment:
+#       - MONGODB_URI=mongodb://mongo:27017/mydatabase  # URI ของ MongoDB
+#     depends_on:
+#       - mongo  # รอ MongoDB ให้เริ่มก่อน
 
-  mongo:
-    image: mongo:latest  # ใช้ image ของ MongoDB
-    ports:
-      - "27017:27017"  # เปิดพอร์ต 27017 บนโฮสต์
-    volumes:
-      - mongo-data:/data/db  # เก็บข้อมูล MongoDB ใน volume
+#   mongo:
+#     image: mongo:latest  # ใช้ image ของ MongoDB
+#     ports:
+#       - "27017:27017"  # เปิดพอร์ต 27017 บนโฮสต์
+#     volumes:
+#       - mongo-data:/data/db  # เก็บข้อมูล MongoDB ใน volume
 
-volumes:
-  mongo-data:
+# volumes:
+#   mongo-data:
